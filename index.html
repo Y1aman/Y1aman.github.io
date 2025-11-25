@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Y1aman.github.io — Starter</title>
+    <style>
+        :root{--bg:#0f1724;--card:#111827;--accent:#06f;--muted:#9ca3af;--glass: rgba(255,255,255,0.04)}
+        html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef8;background:linear-gradient(180deg,var(--bg),#081024);}
+        .wrap{max-width:900px;margin:48px auto;padding:28px;background:linear-gradient(180deg,var(--card),#0b1220);border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+        header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+        .brand{display:flex;align-items:center;gap:12px}
+        .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;color:#021026;font-weight:700}
+        h1{margin:6px 0 0;font-size:20px}
+        p.lead{color:var(--muted);margin:6px 0 18px}
+        .hero{display:grid;grid-template-columns:1fr 260px;gap:20px;align-items:start}
+        .card{padding:16px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.03)}
+        pre{background:#021024;padding:12px;border-radius:8px;color:#bfe9ff;overflow:auto;font-size:13px;margin:0}
+        button{appearance:none;border:0;padding:10px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#7c3aed);color:white;font-weight:600;cursor:pointer}
+        footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+        @media(max-width:720px){.hero{grid-template-columns:1fr;}.wrap{margin:20px;padding:16px}}
+    </style>
+</head>
+<body>
+    <main class="wrap" role="main">
+        <header>
+            <div class="brand">
+                <div class="logo">Y</div>
+                <div>
+                    <h1>Y1aman.github.io</h1>
+                    <div class="lead">Simple starter page — add, commit, push.</div>
+                </div>
+            </div>
+            <nav>
+                <a href="#" style="color:var(--muted);text-decoration:none;font-size:14px">README</a>
+            </nav>
+        </header>
+
+        <section class="hero" aria-label="content">
+            <div class="card">
+                <h2 style="margin-top:0">Welcome</h2>
+                <p class="lead">This index.html is a minimal, ready-to-push homepage. Edit the content below, run your usual git commands and push to your repo.</p>
+
+                <h3 style="margin-bottom:8px">Quick tips</h3>
+                <ul style="color:var(--muted);margin-top:0">
+                    <li>Open this file, customize text or add assets in the repo folder.</li>
+                    <li>Commit with a clear message, e.g. "initial: add starter index.html".</li>
+                    <li>Push to the branch used by GitHub Pages (usually main or gh-pages).</li>
+                </ul>
+            </div>
+
+            <aside class="card" aria-label="git-commands">
+                <strong style="display:block;margin-bottom:8px">Git commands</strong>
+                <pre id="commands">git add .
+git commit -m "initial: add index.html"
+git push origin main</pre>
+                <div style="display:flex;gap:8px;margin-top:12px">
+                    <button id="copyBtn">Copy commands</button>
+                    <button id="openBtn" style="background:#14213d">Open on GitHub</button>
+                </div>
+                <div id="status" style="margin-top:10px;color:var(--muted);font-size:13px"></div>
+            </aside>
+        </section>
+
+        <footer>
+            <small>Generated: <span id="now"></span> — edit this file and push.</small>
+        </footer>
+    </main>
+
+    <script>
+        // Small helpers to copy the suggested git commands and show date
+        document.getElementById('copyBtn').addEventListener('click', async () => {
+            const txt = document.getElementById('commands').innerText;
+            try {
+                await navigator.clipboard.writeText(txt);
+                document.getElementById('status').textContent = 'Commands copied to clipboard.';
+            } catch (e) {
+                document.getElementById('status').textContent = 'Copy failed — select and copy manually.';
+            }
+        });
+
+        // Open GitHub repo (placeholder) — change the URL to your repo
+        document.getElementById('openBtn').addEventListener('click', () => {
+            window.open('https://github.com/Y1aman/Y1aman.github.io-1', '_blank');
+        });
+
+        // Show current date/time
+        document.getElementById('now').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
